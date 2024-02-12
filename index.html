@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(255, 190, 190);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background-color: rgb(217, 217, 217);
+            width: 800px;
+            height: 600px;
+            border-radius: 72px;
+            ;
+            position: relative;
+        }
+
+        .ball {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+            border: 2px solid rgb(255, 255, 255);
+        }   
+
+        .ball-1 {
+            background-color: red;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .ball-2 {
+            background-color: yellow;
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .outer-b1 {
+            width: 150px;
+            height: 150px;
+
+        }
+
+        .outer-b1:hover,
+        .ball-1 , .ball-2{
+            animation: one;
+            animation-duration: 2s;
+            transition: 2s all;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="outer-b1" onmouseover="startAnimation()" onmouseleave="reverseAnimation()">
+                <div class="ball ball-1"></div>
+            </div>
+            <div class="outer-b1" onmouseover="startAnimation2()" onmouseleave="reverseAnimation2()">
+                <div class="ball ball-2"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        let outerB1 = document.querySelector(".outer-b1");
+        let ball1 = document.querySelector(".ball-1")
+        let ball2 = document.querySelector(".ball-2")
+        function startAnimation() {
+         setTimeout(() => {ball1.style.left = "650px";},10)
+         setTimeout(() => { ball1.style.top = "450px";
+                ball2.style.zIndex="1";
+                ball1.style.zIndex="2";
+        }, 2000)
+        setTimeout(() => { ball1.style.top = "447px"; ball1.style.left = "0px";}, 4000)
+        }
+
+        function reverseAnimation(){
+            setTimeout(() => { ball1.style.top = "447px";ball1.style.left = "650px";},10)
+            setTimeout(() => {ball1.style.top = "0px";}, 2000)
+            setTimeout(() => {ball1.style.top = "0px";ball1.style.left = "0px";}, 4000)
+        }
+
+        function startAnimation2(){
+            setTimeout(() => { ball2.style.top = "447px";ball2.style.left = "650px";},10)
+            setTimeout(() => {ball2.style.left = "650px";
+            ball2.style.top="0px";
+            ball1.style.zIndex="1";
+                ball2.style.zIndex="2";
+        }, 2000)
+            setTimeout(() => {ball2.style.top = "0px";ball2.style.left = "0px";}, 4000)
+        }
+
+        // function reverseAnimation2() {
+        //  setTimeout(() => {ball2.style.top = "0px";ball2.style.left = "0px";},10)
+        //  setTimeout(() => {ball2.style.left = "650px";
+        //         ball2.style.top="0px";
+        // }, 2000) 
+        // setTimeout(() => { ball2.style.top = "447px"; ball2.style.left = "0px";}, 4000)
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ball Bounce</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background-color: rgb(217, 217, 217);
+            width: 800px;
+            height: 600px;
+            border-radius: 72px;;
+            position: relative;
+        }
+
+        .ball {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .ball-1 {
+            background-color: red;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .ball-2 {
+            background-color: yellow;
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+        .outer-b1{
+            width: 150px;
+            height: 150px;
+            border:2px solid rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+           <div class="outer-b1" onmouseover="startAnimation()" onmouseleave="reverseAnimation()">
+            <div class="ball ball-1" ></div>
+           </div>
+           <div>
+            <div class="ball ball-2"></div>
+           </div>
+        </div>
+    </div>
+    <script>
+
+            function startAnimation() {
+            let ballEle = document.querySelector(".ball-1");
+            let poeX = 0;
+            let poeY = 0;
+            var anim = setInterval(animate, 5);
+            function animate() {
+                if (poeX == 0 && poeY == 450) {
+                    clearInterval(anim);
+                } else {
+                    if (poeX < 650 && poeY == 0) {
+                        poeX++;
+                    } else if (poeX == 650 && poeY < 450) {
+                        poeY++;
+                    }
+                    else if (poeX >= 0 && poeY == 450) {
+                        poeX--;
+                    }
+                    ballEle.style.left = poeX + "px";
+                    ballEle.style.top = poeY + "px";
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
